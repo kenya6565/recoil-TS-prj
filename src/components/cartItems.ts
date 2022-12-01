@@ -1,4 +1,4 @@
-const cartItems = [
+const cartItems: Object[] = [
   {
     id: 1,
     title: "Next.js入門講座",
