@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import cartItems from "../../components/cartItems";
+import cartItems from "../../cartItems";
 
 export const cartState = atom<object>({
   key: "cartState",

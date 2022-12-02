@@ -1,11 +1,4 @@
-interface cartItem {
-  id: number;
-  title: string;
-  price: string;
-  img: string;
-  amount: number;
-}
-
+import { cartItem } from './interfaces/cartItem';
 const cartItems: cartItem[] = [
   {
     id: 1,
