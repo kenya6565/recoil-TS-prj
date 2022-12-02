@@ -1,4 +1,12 @@
-const cartItems: Object[] = [
+interface cartItem {
+  id: number;
+  title: string;
+  price: string;
+  img: string;
+  amount: number;
+}
+
+const cartItems: cartItem[] = [
   {
     id: 1,
     title: "Next.js入門講座",
