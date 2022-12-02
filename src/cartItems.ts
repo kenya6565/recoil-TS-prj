@@ -1,4 +1,4 @@
-export interface cartItems {
+interface cartItemContent {
   id: number;
   title: string;
   price: string;
@@ -6,7 +6,7 @@ export interface cartItems {
   amount: number;
 }
 
-const cartItems: cartItems[] = [
+const cartItems: cartItemContent[] = [
   {
     id: 1,
     title: "Next.js入門講座",

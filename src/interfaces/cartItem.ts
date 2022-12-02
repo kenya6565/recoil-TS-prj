@@ -1,8 +1,8 @@
 import cartItems from "../cartItems";
-type CARTITEMS = typeof cartItems;
+export type CARTITEMS = typeof cartItems;
 
 export interface cartItem {
-  cartItems: CARTITEMS[];
+  cartItems: CARTITEMS;
   amount: number;
   total: number;
 }
