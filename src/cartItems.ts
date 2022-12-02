@@ -1,5 +1,12 @@
-import { cartItem } from './interfaces/cartItem';
-const cartItems: cartItem[] = [
+export interface cartItems {
+  id: number;
+  title: string;
+  price: string;
+  img: string;
+  amount: number;
+}
+
+const cartItems: cartItems[] = [
   {
     id: 1,
     title: "Next.js入門講座",

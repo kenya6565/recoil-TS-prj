@@ -1,7 +1,8 @@
+import cartItems from "../cartItems";
+type CARTITEMS = typeof cartItems;
+
 export interface cartItem {
-  id: number;
-  title: string;
-  price: string;
-  img: string;
+  cartItems: CARTITEMS[];
   amount: number;
+  total: number;
 }
