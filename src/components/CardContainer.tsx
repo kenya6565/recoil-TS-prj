@@ -1,11 +1,13 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { cartItemSelector } from "../features/Selectors/CartItemSelector";
 import { cartItem } from "../interfaces/cartItem";
 import CartItem from './CartItem';
+import { cartItemState } from '../features/Atoms/CartAtom';
 
 const CardContainer = () => {
-  const cartItem: cartItem = useRecoilValue(cartItemSelector);
+  const cartItem: cartItem = useRecoilValue(cartItemState);
+  const setCartItem = useSetRecoilState(cartItemState);
 
   if (cartItem.amount < 1) {
     return (
