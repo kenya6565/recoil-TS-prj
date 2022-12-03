@@ -2,6 +2,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { cartItemSelector } from "../features/Selectors/CartItemSelector";
 import { cartItem } from "../interfaces/cartItem";
+import CartItem from './CartItem';
 
 const CardContainer = () => {
   const cartItem: cartItem = useRecoilValue(cartItemSelector);
@@ -21,12 +22,16 @@ const CardContainer = () => {
       <header>
         <h2>買い物かご</h2>
       </header>
-      <div></div>
+      <div>
+        {cartItem.cartItems.map((item) => {
+          return <CartItem key={item.id} {...item} />;
+        })}
+      </div>
       <footer>
         <hr />
         <div className="cart-total">
           <h4>
-            合計 <span>円</span>
+            合計 <span>{cartItem.total}円</span>
           </h4>
         </div>
         <button className="btn clear-btn" onClick={() => console.log("hoge")}>
