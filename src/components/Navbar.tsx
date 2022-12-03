@@ -1,6 +1,7 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { cartItemSelector } from "../features/Selectors/CartItemSelector";
+import { CartIcon } from "../heroIcons";
 import { cartItem } from "../interfaces/cartItem";
 
 const Navbar = () => {
@@ -9,6 +10,7 @@ const Navbar = () => {
     <div className="nav-center">
       <h3>Recoil Shopping</h3>
       <div className="nav-container">
+        <CartIcon />
         <div className="amount-container">
           <p className="total-amount">{cartItem.amount}</p>
         </div>
