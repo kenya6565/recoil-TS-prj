@@ -1,13 +1,18 @@
 import React from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { cartItemSelector } from "../features/Selectors/CartItemSelector";
-import { cartItem } from "../interfaces/cartItem";
-import CartItem from './CartItem';
-import { cartItemState } from '../features/Atoms/CartAtom';
+import { useRecoilState } from "recoil";
+import CartItem from "./CartItem";
+import { cartItemState } from "../features/Atoms/CartAtom";
 
 const CardContainer = () => {
-  const cartItem: cartItem = useRecoilValue(cartItemState);
-  const setCartItem = useSetRecoilState(cartItemState);
+  const [cartItem, setCartItem] = useRecoilState(cartItemState);
+
+  const clearCart = (): void => {
+    return setCartItem({
+      cartItems: [],
+      amount: 0,
+      total: 0,
+    });
+  };
 
   if (cartItem.amount < 1) {
     return (
@@ -36,7 +41,7 @@ const CardContainer = () => {
             合計 <span>{cartItem.total}円</span>
           </h4>
         </div>
-        <button className="btn clear-btn" onClick={() => console.log("hoge")}>
+        <button className="btn clear-btn" onClick={() => clearCart()}>
           全削除
         </button>
       </footer>
