@@ -3,15 +3,19 @@ import { MinusIcon, PlusIcon } from "../heroIcons";
 import { cartItemContent } from "../cartItems";
 import { useRecoilState } from "recoil";
 import { cartItemState } from "../features/Atoms/CartAtom";
-import cartItems from "../cartItems";
 
 const CartItem = (props: cartItemContent) => {
   const { img, id, title, price, amount } = props;
   const [cartItem, setCartItem] = useRecoilState(cartItemState);
 
   const removeItem = (id: number) => {
-    cartItem.cartItems.filter((item) => {
-      return id !== item.id
+    const newCartItem = cartItem.cartItems.filter((item) => {
+      return id !== item.id;
+    });
+    setCartItem({
+      cartItems: newCartItem,
+      amount: cartItem.amount,
+      total: cartItem.total,
     });
   };
 
