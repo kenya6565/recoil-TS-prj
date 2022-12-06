@@ -2,10 +2,15 @@ import { MinusIcon, PlusIcon } from "../heroIcons";
 import { cartItemContent } from "../cartItems";
 import { useRecoilState } from "recoil";
 import { cartItemState } from "../features/Atoms/CartAtom";
+import { useEffect } from "react";
 
 const CartItem = (props: cartItemContent) => {
   const { img, id, title, price, amount } = props;
   const [cartItem, setCartItem] = useRecoilState(cartItemState);
+
+  useEffect(() => {
+    calculateTotals();
+  }, []);
 
   const removeItem = (id: number) => {
     const newCartItem = cartItem.cartItems.filter((item) => {
@@ -23,7 +28,21 @@ const CartItem = (props: cartItemContent) => {
       (item) => item.id === id
     ) as cartItemContent;
 
-    console.log(targetCartItem.amount += 1);
+    console.log((targetCartItem.amount += 1));
+  };
+
+  const calculateTotals = () => {
+    let amount = 0;
+    let total = 0;
+    cartItem.cartItems.forEach((item) => {
+      amount += item.amount;
+      total += item.price * item.amount;
+    });
+    setCartItem({
+      cartItems: cartItem.cartItems,
+      amount: amount,
+      total: total,
+    });
   };
 
   return (
