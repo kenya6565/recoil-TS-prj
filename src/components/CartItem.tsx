@@ -1,4 +1,3 @@
-import React from "react";
 import { MinusIcon, PlusIcon } from "../heroIcons";
 import { cartItemContent } from "../cartItems";
 import { useRecoilState } from "recoil";
@@ -19,6 +18,14 @@ const CartItem = (props: cartItemContent) => {
     });
   };
 
+  const increaseAmount = (id: number) => {
+    let targetCartItem = cartItem.cartItems.find(
+      (item) => item.id === id
+    ) as cartItemContent;
+
+    console.log(targetCartItem.amount += 1);
+  };
+
   return (
     <article className="cart-item">
       <img src={img} alt="" />
@@ -28,7 +35,7 @@ const CartItem = (props: cartItemContent) => {
         <button className="remove-btn" onClick={() => removeItem(id)}>
           削除
         </button>
-        <button className="amount-btn" onClick={() => console.log("hoge")}>
+        <button className="amount-btn" onClick={() => increaseAmount(id)}>
           <PlusIcon />
         </button>
         <p className="amount">{amount}</p>
