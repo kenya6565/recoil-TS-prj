@@ -7,7 +7,8 @@ export const Text = ({
   as: any;
   children: React.ReactNode;
 }) => {
-  return <div>Text</div>;
+  const Component = as || 'span'
+  return <Component>{children}</Component>;
 };
 
 export default Text;
